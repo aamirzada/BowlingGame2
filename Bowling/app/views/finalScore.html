@@ -1,0 +1,23 @@
+﻿<header>
+    <div class="row text-center">
+        <h2>Thank you for playing Game</h2>
+    </div>
+</header>
+
+<section id="GameEnded">
+    <div class="row" style="margin-top:15px;">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+
+                    <div class="alert alert-success" style="margin:10px;">
+                        <h2>Your Total Score is : {{vm.totalScore}}</h2>.
+                    </div>
+                    <div class="text-center">
+                        <a class="btn btn-lg btn-primary" ng-click="vm.reStart()">Start Again</a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

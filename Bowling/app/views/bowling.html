@@ -1,0 +1,70 @@
+﻿<section id="scoreCard">
+    <div class="text-center" style="margin-top:15px;">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div ng-repeat="frame in vm.frames" style="background-color:#e6eadc;border:1px solid black;min-height:25px" class="col-sm-1">
+                <div ng-class="vm.isBounsFrame && $last? 'col-sm-4': 'col-sm-6'" style="border-right:1px solid black;min-height: 23px;">
+                    {{frame.firstBox}}
+                </div>
+                <div ng-class="isBounsFrame && $last? 'col-sm-4': 'col-sm-6'">
+                    {{frame.secondBox}}
+                </div>
+
+                <div ng-show="$last" class="col-sm-4">
+                    {{frame.ThirdRoll}}
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div ng-repeat="frame in vm.frames" style="background-color:#e6eadc;border:1px solid black;min-height:25px" class="col-sm-1">
+                {{frame.currentScore}}
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</section>
+
+<section id="GamePanel" ng-show="!vm.ended">
+    <div class="alert alert-danger col-xs-12 col-sm-offset-3 col-sm-6 col-sm-offset-3" style="margin-top:10px;" ng-if="vm.inValid">
+        The sum of two rolls should not be greater than 10.
+    </div>
+
+    <div class="alert alert-success col-xs-12 col-sm-offset-3 col-sm-6 col-sm-offset-3" style="margin-top:10px;" ng-if="vm.Strike">
+        <h2>WoWWWWW</h2>.
+    </div>
+    <div class="row" style="margin-top:15px;">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Enter the No of knocked down pin in each roll
+                </div>
+                <div class="panel-body">
+                    <form class="form-group" name="bowlingForm">
+
+                        <div class="form-group">
+                            <label for="firstRoll">FirstRoll:</label>
+                            <input type="number" ng-blur="vm.checkBonusFrame()" class="form-control" max="10" min="0" name="firstRoll" ng-model="vm.frameModel.FirstRoll">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="secondRoll">SecondRoll:</label>
+                            <input type="number" ng-blur="vm.checkBonusFrame()" class="form-control" max="10" min="0" name="secondRoll" ng-model="vm.frameModel.SecondRoll">
+                        </div>
+                        <div class="form-group" ng-show="vm.isBounsFrame">
+                            <label for="thirdRoll">ThirdRoll:</label>
+                            <input type="number" class="form-control" max="10" min="0" name="thirdRoll" ng-model="vm.frameModel.ThirdRoll">
+                        </div>
+                        <div class="form-group text-center">
+
+                            <input type="button" class="btn btn-lg btn-primary" ng-click="vm.submitModel($this.bowlingForm)" name="thirdRoll" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
